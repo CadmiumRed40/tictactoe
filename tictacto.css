@@ -1,13 +1,23 @@
 body{
+    display: flex;
+    justify-content: center;
     background-color:antiquewhite;
+    box-sizing: border-box;
+
+}
+
+.game-mode-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    margin: 20px;
+    padding:20px;
 }
 
 .game-mode {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    width: 50%;
-    margin: 20px;
+    padding:40px 60px;
 }
 
 button .redo {
@@ -15,17 +25,11 @@ button .redo {
     flex-direction: flex-end;
 }
 
-.row1, .row2, .row3{
-    display:inline-block;
-    flex-direction: column;
+.grid-container{
+    display:grid;
+    grid-template-columns: auto auto auto;
     align-items: center;
     justify-content: center;
-    margin: 30px;
-    padding: 20px;
-    width: 20%;
-    height:40px;
-    border:none;
-    background:none;
 }
 
 .row1:hover, .row2:hover,.row3:hover {
