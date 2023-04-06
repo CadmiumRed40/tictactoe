@@ -2,7 +2,7 @@ body{
     display: flex;
     justify-content: center;
     background-color:antiquewhite;
-    box-sizing: border-box;
+   
 
 }
 
@@ -32,7 +32,59 @@ button .redo {
     justify-content: center;
 }
 
-.row1:hover, .row2:hover,.row3:hover {
+.tictac-box{
+    display: flex;
+    justify-content: center;
+    margin: -5px;
+    padding: 40px;
+    width: 20%;
+    height:auto;
+    border:none;
+    background:none;
+}
+
+.tictac-box:hover {
     transition: ease-in-out .3s;
     background-color: aquamarine;
+}
+
+/*============boarders===============*/
+
+.one{
+    border-right: 1px solid #000;
+}
+
+.two{
+}
+
+.three{
+    border-left: 1px solid #000;
+}
+
+.four{
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.five{
+    border-top: 1px solid #000;
+}
+
+.six{
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+}
+
+.seven{
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.eight{
+    border-top: 1px solid #000;
+}
+
+.nine{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
 }
