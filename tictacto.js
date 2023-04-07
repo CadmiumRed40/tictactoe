@@ -1,19 +1,28 @@
-// Game pieces
-const one = document.getElementsByClassName('one').addEventListener('click')
-const two = document.getElementsByClassName('two').addEventListener('click')
-const three = document.getElementsByClassName('three').addEventListener('click')
-const four = document.getElementsByClassName('four').addEventListener('click')
-const five = document.getElementsByClassName('five').addEventListener('click')
-const six = document.getElementsByClassName('six').addEventListener('click')
-const seven = document.getElementsByClassName('seven').addEventListener('click')
-const eight = document.getElementsByClassName('eight').addEventListener('click')
-const nine = document.getElementsByClassName('nine').addEventListener('click')
-
 //array of the game board
-const gameBoard =
-    [one,two,three,
-     four,five,six,
-     seven,eight,nine]
+const gameBoard = [
+    document.getElementById('one'),
+    document.getElementById('two'),
+    document.getElementById('three'),
+    document.getElementById('four'),
+    document.getElementById('five'),
+    document.getElementById('six'),
+    document.getElementById('seven'),
+    document.getElementById('eight'),
+    document.getElementById('nine')
+];
+
+const playerOne = [];
+const playerTwo = [];
+
+gameBoard.forEach((element) => {
+    element.addEventListener('click', () => {
+        playerOne.push(element)
+        console.log(`clicked:${element}`);
+        console.log(`Player One:${playerOne}`)
+    })
+
+    return 
+})
 
 //solutions
 const solutions = {
@@ -31,15 +40,10 @@ const solutions = {
 function onePlayerGame(){
     document.getElementById('player1Button').addEventListener('click', chosen)
     
-    const playerOne = [];
-    const playerTwo = [];
-
     function chosen(){
         document.getElementById('player2Button').style.display = 'none'
         alert('One player game chosen!')
     };
-
-
 
 }
 
