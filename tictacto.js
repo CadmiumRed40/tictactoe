@@ -1,15 +1,15 @@
 //array of the game board
-const gameBoard = [
-    document.getElementById('one'),
-    document.getElementById('two'),
-    document.getElementById('three'),
-    document.getElementById('four'),
-    document.getElementById('five'),
-    document.getElementById('six'),
-    document.getElementById('seven'),
-    document.getElementById('eight'),
-    document.getElementById('nine')
-];
+const gameBoard = {
+    one: document.getElementById('one'),
+    two: document.getElementById('two'),
+    three: document.getElementById('three'),
+    four: document.getElementById('four'),
+    five: document.getElementById('five'),
+    six: document.getElementById('six'),
+    seven: document.getElementById('seven'),
+    eight: document.getElementById('eight'),
+    nine: document.getElementById('nine')
+};
 
 const playerOne = [];
 const playerTwo = [];
@@ -20,8 +20,6 @@ gameBoard.forEach((element) => {
         console.log(`clicked:${element}`);
         console.log(`Player One:${playerOne}`)
     })
-
-    return 
 })
 
 //solutions
@@ -36,28 +34,13 @@ const solutions = {
     8:[seven,eight,nine]
 }
 
-// function for choosing one player game
-function onePlayerGame(){
-    document.getElementById('player1Button').addEventListener('click', chosen)
-    
-    function chosen(){
-        document.getElementById('player2Button').style.display = 'none'
-        alert('One player game chosen!')
-    };
+function startOver(){
+    document.getElementById('redo').addEventListener('click', reset)
 
+    function reset(){
+        document.getElementById('player2Button').style.display = 'block'
+        document.getElementById('player1Button').style.display = 'block'
+    }
 }
 
-onePlayerGame()
-
-//function for choosing two player game
-/*
-function twoPlayerGame(){
-    document.getElementById('player2Button').addEventListener('click', chosen)
-    
-    function chosen(){
-        document.getElementById('player1Button').style.display = 'none'
-        alert('Two player game chosen')
-    };
-}
-twoPlayerGame()
-*/
+startOver()

@@ -88,3 +88,9 @@ button .redo {
     border-left: 1px solid #000;
     border-top: 1px solid #000;
 }
+
+/*=================WIN STATUS==================*/
+
+#win, #tie, #p1Wins, #p2Wins {
+    display: none;
+}
