@@ -1,4 +1,3 @@
-//array of the game board
 const gameBoard = {
     one: document.getElementById('one'),
     two: document.getElementById('two'),
@@ -9,45 +8,35 @@ const gameBoard = {
     seven: document.getElementById('seven'),
     eight: document.getElementById('eight'),
     nine: document.getElementById('nine')
-};
-
-const playerOne = [];
-const playerTwo = [];
-
-for (const element of Object.values(gameBoard)) {
-    element.addEventListener('click', () => { 
-    if (playerOne.includes(element) || playerTwo.includes(element)) {
-        return;
-        }
-
-        if (playerOne.length === playerTwo.length) {
-            element.textContent = 'X'
-            playerOne.push(element);
-            console.log(`Player One: ${playerOne}`);
-        } else {
-            element.textContent = 'O';
-            playerTwo.push(element);
-            console.log(`Player Two: ${playerTwo}`);
-        }
-
-        checkForWin();
-        checkForTie();
-    });
-}
-
-
-/*
-gameBoard.forEach((element) => {
+  };
+  
+  let playerOne = [];
+  let playerTwo = [];
+  
+  let gameOver = false;
+  
+  for (const element of Object.values(gameBoard)) {
     element.addEventListener('click', () => {
-        playerOne.push(element)
-        console.log(`clicked:${element}`);
-        console.log(`Player One:${playerOne}`)
-    })
-})
-*/
-
-//solutions
-const solutions = {
+      if (gameOver || playerOne.includes(element) || playerTwo.includes(element)) {
+        return;
+      }
+  
+      if (playerOne.length === playerTwo.length) {
+        element.textContent = 'X'
+        playerOne.push(element);
+        console.log(`Player One: ${playerOne}`);
+      } else {
+        element.textContent = 'O';
+        playerTwo.push(element);
+        console.log(`Player Two: ${playerTwo}`);
+      }
+  
+      checkForWin();
+      checkForTie();
+    });
+  }
+  
+  const solutions = {
     1:[gameBoard.one,gameBoard.two,gameBoard.three],
     2:[gameBoard.one,gameBoard.five,gameBoard.nine],
     3:[gameBoard.one,gameBoard.four,gameBoard.seven],
@@ -56,39 +45,55 @@ const solutions = {
     6:[gameBoard.three,gameBoard.five,gameBoard.seven],
     7:[gameBoard.four,gameBoard.five,gameBoard.six],
     8:[gameBoard.seven,gameBoard.eight,gameBoard.nine]
-};
-
-function checkForWin() {
+  };
+  
+  function checkForWin() {
     for (const solution of Object.values(solutions)) {
-        const [a,b,c] = solution;
-        if(a.textContent!== '' && a.textContent ===b.textContent && b.textContent === c.textContent){
-            console.log(`Player ${playerOne.length > playerTwo.length ? 'One' : 'Two'} wins!`);
-            startOver();
-            return;
-        }
+      const [a,b,c] = solution;
+      if (a.textContent !== '' && a.textContent === b.textContent && b.textContent === c.textContent) {
+        const player = playerOne.length > playerTwo.length ? 'One' : 'Two';
+        console.log(`Player ${player} wins!`);
+        gameOver = true;
+        document.getElementById('win').style.display = 'block';
+        document.getElementById('redo').style.display = 'block';
+        document.getElementById('player2Button').style.display = 'none';
+        document.getElementById('player1Button').style.display = 'none';
+        break;
+      }
     }
-}
-
-
-
-function startOver(){
-    document.getElementById('redo').addEventListener('click', reset)
-
-    for(const element of Object.values(gameBoard)) {
-        element.textContent = ''
+  }
+  
+  function checkForTie() {
+    if (gameOver) {
+      return;
     }
-
-    playerOne.length = 0;
-    playerTwo.length = 0;
-
-    function reset(){
-        document.getElementById('player2Button').style.display = 'block'
-        document.getElementById('player1Button').style.display = 'block'
-
-        playerOne.length = 0;
-        playerTwo.length = 0;
-
+    
+    if (Object.values(gameBoard).every((cell) => cell.textContent !== '')) {
+      console.log('It\'s a tie!');
+      gameOver = true;
+      const tieEl = document.getElementById('tie');
+      tieEl.style.display = 'block';
+      document.getElementById('redo').style.display = 'block';
+      document.getElementById('player2Button').style.display = 'none';
+      document.getElementById('player1Button').style.display = 'none';
     }
-}
-
-startOver()
+  }
+  
+  function startOver() {
+    for (const element of Object.values(gameBoard)) {
+      element.textContent = '';
+    }
+  
+    playerOne = [];
+    playerTwo = [];
+    gameOver = false;
+  
+    document.getElementById('player2Button').style.display = 'block';
+    document.getElementById('player1Button').style.display = 'block';
+    document.getElementById('tie').style.display = 'none';
+    document.getElementById('win').style.display = 'none';
+    document.getElementById('redo').style.display = 'none';
+  }
+  
+  document.getElementById('redo').addEventListener('click', startOver)
+  
