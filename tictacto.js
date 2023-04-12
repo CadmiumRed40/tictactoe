@@ -74,8 +74,6 @@ const gameBoard = {
       const tieEl = document.getElementById('tie');
       tieEl.style.display = 'block';
       document.getElementById('redo').style.display = 'block';
-      document.getElementById('player2Button').style.display = 'none';
-      document.getElementById('player1Button').style.display = 'none';
     }
   }
   
@@ -87,9 +85,7 @@ const gameBoard = {
     playerOne = [];
     playerTwo = [];
     gameOver = false;
-  
-    document.getElementById('player2Button').style.display = 'block';
-    document.getElementById('player1Button').style.display = 'block';
+    
     document.getElementById('tie').style.display = 'none';
     document.getElementById('win').style.display = 'none';
     document.getElementById('redo').style.display = 'none';
