@@ -2,8 +2,6 @@ body{
     display: flex;
     justify-content: center;
     background-color:antiquewhite;
-   
-
 }
 
 .game-mode-container {
@@ -27,9 +25,11 @@ button .redo {
 
 .grid-container{
     display:grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
+    width: 500px;
+    height: 500px;
 }
 
 .tictac-box{
@@ -37,10 +37,10 @@ button .redo {
     justify-content: center;
     margin: -5px;
     padding: 40px;
-    width: 20%;
-    height:auto;
-    border:none;
-    background:none;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000; /* added border to the boxes */
+    box-sizing: border-box; /* added box-sizing to include border in box dimensions */
 }
 
 .tictac-box:hover {
@@ -51,42 +51,45 @@ button .redo {
 /*============boarders===============*/
 
 .one{
-    border-right: 1px solid #000;
+    border-right: none;
+    border-bottom: none;
 }
 
 .two{
+    border-bottom: none;
 }
 
 .three{
-    border-left: 1px solid #000;
+    border-left: none;
+    border-bottom: none;
 }
 
 .four{
-    border-top: 1px solid #000;
-    border-right: 1px solid #000;
+    border-right: none;
 }
 
 .five{
-    border-top: 1px solid #000;
+    border-right: none;
+    border-bottom: none;
 }
 
 .six{
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
+    border-left: none;
+    border-bottom: none;
 }
 
 .seven{
-    border-top: 1px solid #000;
-    border-right: 1px solid #000;
+    border-right: none;
+    border-top: none;
 }
 
 .eight{
-    border-top: 1px solid #000;
+    border-top: none;
 }
 
 .nine{
-    border-left: 1px solid #000;
-    border-top: 1px solid #000;
+    border-left: none;
+    border-top: none;
 }
 
 /*=================WIN STATUS==================*/
